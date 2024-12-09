@@ -15,7 +15,18 @@ def home():
         cur.execute("SELECT MAX(last_price) FROM bitcoin_variations;")
         result = cur.fetchone()
 
-        return f"Máximo preço do Bitcoin: {result[0]}"
+        return f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta http-equiv="refresh" content="2">
+            <title>Preço do Bitcoin</title>
+        </head>
+        <body>
+            <h1>Máximo preço do Bitcoin: {result[0]}</h1>
+        </body>
+        </html>
+        """
     except Exception as e:
         return "Conexão negada"
     
